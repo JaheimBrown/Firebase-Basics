@@ -119,7 +119,6 @@ export const Wrapper = styled.div`
         }
         
       } 
-    }
 
       button {
         background: #340fc9;
@@ -142,6 +141,9 @@ export const Wrapper = styled.div`
           box-shadow: 12px 12px 24px rgba(52, 15, 201, 0.5);
         }
       }
+    }
+
+      
     }
 
     .divider {
@@ -196,7 +198,7 @@ export const Wrapper = styled.div`
         transition: all 0.2s ease;
 
         &:hover {
-          border: 1px solid rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(0, 0, 0, 0.25);
         }
       }
 
@@ -208,7 +210,7 @@ export const Wrapper = styled.div`
         transition: all 0.2s ease;
 
         &:hover {
-          box-shadow: 12px 12px 24px rgba(54, 54, 54, 0.4);
+          box-shadow: 12px 12px 24px rgba(54, 54, 54, 0.6);
         }
       }
     }
