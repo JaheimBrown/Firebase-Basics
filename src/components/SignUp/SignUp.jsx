@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Wrapper } from "./styles";
 import signPost from "../../assets/sign-post.png";
@@ -17,21 +18,30 @@ const SignUp = () => {
         <div className="heading">
           <h2>Create an Account</h2>
           <p>
-            Already have an account? <a href="/">Sign in</a>
+            Already have an account? <Link to="/login">Sign in</Link>
           </p>
         </div>
 
         <form>
           <div className="field">
-            <input placeholder="Email" type="email" name="email" id="email" />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="email"
+              required
+            />
+            <label htmlFor="email">Email</label>
           </div>
           <div className="field">
             <input
-              placeholder="Password"
               type="password"
               name="password"
               id="password"
+              placeholder="password"
+              required
             />
+            <label htmlFor="password">Password</label>
           </div>
           <button className="cta">Sign Up</button>
         </form>

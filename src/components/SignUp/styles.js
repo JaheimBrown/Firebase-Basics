@@ -66,24 +66,48 @@ export const Wrapper = styled.div`
     form {
       .field {
         position: relative;
-      }
-
-      input {
-        position: relative;
         border: 1px solid red;
-        padding: 16px 24px;
-        border-radius: 12px;
         width: 100%;
         height: 100%;
-        border: 1px solid rgba(0, 0, 0, 0.3);
         font-size: 16px;
         margin-bottom: 1.25rem;
         outline: none;
         transition: color 0.3s ease-in-out;
+        outline: none;
+          border: 0;
 
-        &::placeholder {
+        input{
+          width: 100%;
+          height: 100%;
+          padding: 16px 24px;
+          outline: none;
+          border: 0;
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          border-radius: 12px;
+          font-family: "Poppins", sans-serif;
+          font-size: 16px;
+
+          &:focus ~ label,
+          &:not(:placeholder-shown)  ~ label,
+          &:valid:not(:focus) ~ label{
+            transform: translateY(-26px);
+            background-color: #FFF;
+            padding-inline: 5px;
+            font-size: 14px;
+          }
+
+          &:focus {
+            outline: 2px solid #340fc9;
+          }
+
+          &::placeholder{
+            color: transparent;
+          }
+        }
+
+        label {
           position: absolute;
-          top: 12px;
+          top: 16px;
           left: 24px;
           font-family: "Poppins";
           font-style: normal;
@@ -91,12 +115,11 @@ export const Wrapper = styled.div`
           font-size: 16px;
           line-height: 24px;
           color: #343434;
+          transition: transform .3s ease;
         }
-
-        &:focus {
-          outline: 2px solid #340fc9;
-        }
-      }
+        
+      } 
+    }
 
       button {
         background: #340fc9;
