@@ -74,9 +74,9 @@ export const Wrapper = styled.div`
         outline: none;
         transition: color 0.3s ease-in-out;
         outline: none;
-          border: 0;
+        border: 0;
 
-        input{
+        input {
           width: 100%;
           height: 100%;
           padding: 16px 24px;
@@ -88,10 +88,10 @@ export const Wrapper = styled.div`
           font-size: 16px;
 
           &:focus ~ label,
-          &:not(:placeholder-shown)  ~ label,
-          &:valid:not(:focus) ~ label{
+          &:not(:placeholder-shown) ~ label,
+          &:valid:not(:focus) ~ label {
             transform: translateY(-26px);
-            background-color: #FFF;
+            background-color: #fff;
             padding-inline: 5px;
             font-size: 14px;
           }
@@ -100,8 +100,10 @@ export const Wrapper = styled.div`
             outline: 2px solid #340fc9;
           }
 
-          &::placeholder{
+          &::placeholder {
             color: transparent;
+            user-select: none;
+            pointer-events: none;
           }
         }
 
@@ -115,10 +117,11 @@ export const Wrapper = styled.div`
           font-size: 16px;
           line-height: 24px;
           color: #343434;
-          transition: transform .3s ease;
+          transition: transform 0.3s ease;
+          user-select: none;
+          pointer-events: none;
         }
-        
-      } 
+      }
 
       button {
         background: #340fc9;
@@ -142,77 +145,85 @@ export const Wrapper = styled.div`
         }
       }
     }
+  }
 
-      
+  .divider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.25rem 0;
+
+    p {
+      text-align: center;
+      margin-inline: 0.5rem;
     }
 
-    .divider {
+    .line {
+      flex: 1;
+      display: block;
+      height: 2px;
+      background-color: rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+  }
+
+  .other-method {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    button {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      margin: 1.25rem 0;
+      border-radius: 12px;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      padding: 16px 24px;
+      color: #000000;
+      outline: none;
+      cursor: pointer;
 
-      p {
-        text-align: center;
-        margin-inline: 0.5rem;
-      }
-
-      .line {
-        flex: 1;
-        display: block;
-        height: 2px;
-        background-color: rgba(0, 0, 0, 0.1);
-        width: 100%;
+      img {
+        margin-right: 10px;
       }
     }
 
-    .other-method {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+    .google {
+      background: #fff;
+      box-shadow: 12px 12px 24px #f5f5f5;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
 
-      button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 12px;
-        font-family: "Poppins";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        padding: 16px 24px;
-        color: #000000;
-        outline: none;
-        cursor: pointer;
-
-        img {
-          margin-right: 10px;
-        }
+      &:hover {
+        border: 1px solid rgba(0, 0, 0, 0.25);
       }
+    }
 
-      .google {
-        background: #fff;
-        box-shadow: 12px 12px 24px #f5f5f5;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        transition: all 0.2s ease;
+    .github {
+      background: #363636;
+      color: #fff;
+      box-shadow: 12px 12px 24px rgba(54, 54, 54, 0.2);
+      border: 0;
+      transition: all 0.2s ease;
 
-        &:hover {
-          border: 1px solid rgba(0, 0, 0, 0.25);
-        }
+      &:hover {
+        box-shadow: 12px 12px 24px rgba(54, 54, 54, 0.6);
       }
+    }
+  }
 
-      .github {
-        background: #363636;
-        color: #fff;
-        box-shadow: 12px 12px 24px rgba(54, 54, 54, 0.2);
-        border: 0;
-        transition: all 0.2s ease;
+  @media (max-width: 1025px) {
+    margin-inline: 2em;
+  }
 
-        &:hover {
-          box-shadow: 12px 12px 24px rgba(54, 54, 54, 0.6);
-        }
-      }
+  @media (max-width: 800px) {
+    margin-top: 4em;
+    .image-container {
+      display: none;
     }
   }
 `;
