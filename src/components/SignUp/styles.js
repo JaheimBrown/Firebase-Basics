@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   background-color: #fff;
   max-width: 1000px;
   height: calc(100vh - 50px);
-  max-height: 650px;
+  min-height: 625px;
   margin: 1.5em auto;
   border-radius: 24px;
   box-shadow: -12px -12px 24px #f5f5f5, 12px 12px 24px #f5f5f5;
