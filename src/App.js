@@ -10,8 +10,8 @@ function App() {
     <>
       <GlobalStyles />
       <Routes>
-        <Route exact path="/" element={<SignUp />} />
-        <Route exact path="/login" element={<SignIn />} />
+        <Route exact path="/" element={<SignIn />} />
+        <Route exact path="/signUp" element={<SignUp />} />
       </Routes>
     </>
   );

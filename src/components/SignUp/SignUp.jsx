@@ -2,15 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Wrapper } from "./styles";
-import signPost from "../../assets/sign-post.png";
 import google from "../../assets/google.svg";
 import github from "../../assets/github.svg";
+import Lottie from "lottie-react";
+import popcorn from "../../assets/animations/watch-a-movie-with-popcorn.json";
 
 const SignUp = () => {
+  const styles = {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  };
+
   return (
     <Wrapper>
       <div className="image-container">
-        <img src={signPost} alt="sign-up-image" />
+        <Lottie animationData={popcorn} style={styles} loop={true} />
       </div>
 
       <div className="content">
@@ -18,7 +25,7 @@ const SignUp = () => {
         <div className="heading">
           <h2>Create an Account</h2>
           <p>
-            Already have an account? <Link to="/login">Sign in</Link>
+            Already have an account? <Link to="/">Sign in</Link>
           </p>
         </div>
 
