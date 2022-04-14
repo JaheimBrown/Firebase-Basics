@@ -7,7 +7,13 @@ import github from "../../assets/github.svg";
 import Lottie from "lottie-react";
 import popcorn from "../../assets/animations/watch-a-movie-with-popcorn.json";
 
-const SignUp = ({ handleSignUp, googleLogin, githubLogin }) => {
+const SignUp = ({
+  handleSignUp,
+  googleLogin,
+  githubLogin,
+  error,
+  errorMsg,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,11 +36,18 @@ const SignUp = ({ handleSignUp, googleLogin, githubLogin }) => {
           <p>
             Already have an account? <Link to="/">Sign in</Link>
           </p>
+
+          {error ? (
+            <p className="errorMsg show">{errorMsg}</p>
+          ) : (
+            <p className="errorMsg">{errorMsg}</p>
+          )}
         </div>
 
         <form>
           <div className="field">
             <input
+              className={error ? "error-border" : ""}
               type="email"
               name="email"
               id="email"
@@ -47,6 +60,7 @@ const SignUp = ({ handleSignUp, googleLogin, githubLogin }) => {
           </div>
           <div className="field">
             <input
+              className={error ? "error-border" : ""}
               type="password"
               name="password"
               id="password"
@@ -62,8 +76,6 @@ const SignUp = ({ handleSignUp, googleLogin, githubLogin }) => {
             onClick={e => {
               e.preventDefault();
               handleSignUp(email, password);
-              setPassword("");
-              setEmail("");
             }}
           >
             Sign Up

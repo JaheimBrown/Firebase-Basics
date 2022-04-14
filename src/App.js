@@ -18,7 +18,10 @@ function App() {
   const auth = getAuth();
   const navigate = useNavigate();
 
+  // STATES
   const [userData, setUserData] = useState(null);
+  const [error, setIsError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSignUp = (email, password) => {
     if (!email || !password) return;
@@ -28,11 +31,7 @@ function App() {
         setUserData(data);
         data && navigate("/home");
       })
-      .catch(err => {
-        const errorCode = err.code;
-        const errorMessage = err.message;
-        console.log(errorCode, errorMessage);
-      });
+      .catch(err => createErrorMessage(err.code));
   };
 
   const handleSignIn = (email, password) => {
@@ -43,7 +42,10 @@ function App() {
         setUserData(data);
         data && navigate("/home");
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.code);
+        createErrorMessage(err.code);
+      });
   };
 
   const googleLogin = () => {
@@ -66,6 +68,33 @@ function App() {
       .catch(err => console.log(err));
   };
 
+  // Error Handling
+  const createErrorMessage = code => {
+    if (code === "auth/user-not-found") {
+      setErrorMsg("No such user exist *");
+      setIsError(true);
+      setTimeout(() => {
+        setIsError(false);
+      }, 3000);
+    }
+
+    if (code === "auth/wrong-password") {
+      setErrorMsg("Incorrect email or password *");
+      setIsError(true);
+      setTimeout(() => {
+        setIsError(false);
+      }, 3000);
+    }
+
+    if (code === "auth/email-already-in-use") {
+      setErrorMsg("Email already in use *");
+      setIsError(true);
+      setTimeout(() => {
+        setIsError(false);
+      }, 3000);
+    }
+  };
+
   return (
     <>
       <GlobalStyles />
@@ -78,6 +107,8 @@ function App() {
               handleSignIn={handleSignIn}
               googleLogin={googleLogin}
               githubLogin={githubLogin}
+              error={error}
+              errorMsg={errorMsg}
             />
           }
         />
@@ -89,6 +120,8 @@ function App() {
               handleSignUp={handleSignUp}
               googleLogin={googleLogin}
               githubLogin={githubLogin}
+              error={error}
+              errorMsg={errorMsg}
             />
           }
         />

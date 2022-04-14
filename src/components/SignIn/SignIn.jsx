@@ -7,7 +7,13 @@ import workingHome from "../../assets/animations/man-working-under-lamp-light.js
 import google from "../../assets/google.svg";
 import github from "../../assets/github.svg";
 
-const SignIn = ({ handleSignIn, googleLogin, githubLogin }) => {
+const SignIn = ({
+  handleSignIn,
+  googleLogin,
+  githubLogin,
+  error,
+  errorMsg,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,6 +36,12 @@ const SignIn = ({ handleSignIn, googleLogin, githubLogin }) => {
           <p>
             Don't already have an account? <Link to="/signUp">Sign up</Link>
           </p>
+
+          {error ? (
+            <p className="errorMsg show">{errorMsg}</p>
+          ) : (
+            <p className="errorMsg">{errorMsg}</p>
+          )}
         </div>
 
         <form
@@ -40,6 +52,7 @@ const SignIn = ({ handleSignIn, googleLogin, githubLogin }) => {
         >
           <div className="field">
             <input
+              className={error ? "error-border" : ""}
               type="email"
               name="email"
               id="email"
@@ -52,6 +65,7 @@ const SignIn = ({ handleSignIn, googleLogin, githubLogin }) => {
           </div>
           <div className="field">
             <input
+              className={error ? "error-border" : ""}
               type="password"
               name="password"
               id="password"

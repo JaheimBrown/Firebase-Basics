@@ -41,6 +41,7 @@ export const Wrapper = styled.div`
     }
 
     .heading {
+      position: relative;
       margin: 2rem 0;
 
       h2 {
@@ -60,6 +61,22 @@ export const Wrapper = styled.div`
         a {
           color: #340fc9;
         }
+      }
+
+      .errorMsg {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        position: absolute;
+        bottom: -1.5rem;
+        opacity: 0;
+        color: #d55050;
+      }
+
+      .errorMsg.show {
+        opacity: 1;
       }
     }
 
@@ -104,6 +121,14 @@ export const Wrapper = styled.div`
             color: transparent;
             user-select: none;
             pointer-events: none;
+          }
+        }
+
+        .error-border {
+          border: 1px solid #b00020;
+
+          &:focus {
+            outline: 1px solid #b00020;
           }
         }
 
