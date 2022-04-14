@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Wrapper } from "./styles";
@@ -7,7 +7,10 @@ import workingHome from "../../assets/animations/man-working-under-lamp-light.js
 import google from "../../assets/google.svg";
 import github from "../../assets/github.svg";
 
-const SignIn = () => {
+const SignIn = ({ handleSignIn, googleLogin, githubLogin }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const styles = {
     width: "100%",
     height: "100%",
@@ -29,13 +32,20 @@ const SignIn = () => {
           </p>
         </div>
 
-        <form>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            handleSignIn(email, password);
+          }}
+        >
           <div className="field">
             <input
               type="email"
               name="email"
               id="email"
               placeholder="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
               required
             />
             <label htmlFor="email">Email</label>
@@ -46,6 +56,8 @@ const SignIn = () => {
               name="password"
               id="password"
               placeholder="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
               required
             />
             <label htmlFor="password">Password</label>
@@ -60,10 +72,10 @@ const SignIn = () => {
         </div>
 
         <div className="other-method">
-          <button className="google">
+          <button className="google" onClick={() => googleLogin()}>
             <img src={google} alt="google-icon" /> Sign In with Google
           </button>
-          <button className="github">
+          <button className="github" onClick={() => githubLogin()}>
             <img src={github} alt="github-icon" /> Sign In with GitHub
           </button>
         </div>

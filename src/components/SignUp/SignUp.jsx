@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Wrapper } from "./styles";
@@ -7,7 +7,10 @@ import github from "../../assets/github.svg";
 import Lottie from "lottie-react";
 import popcorn from "../../assets/animations/watch-a-movie-with-popcorn.json";
 
-const SignUp = () => {
+const SignUp = ({ handleSignUp, googleLogin, githubLogin }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const styles = {
     width: "100%",
     height: "100%",
@@ -36,6 +39,8 @@ const SignUp = () => {
               name="email"
               id="email"
               placeholder="email"
+              onChange={e => setEmail(e.target.value)}
+              value={email}
               required
             />
             <label htmlFor="email">Email</label>
@@ -46,11 +51,23 @@ const SignUp = () => {
               name="password"
               id="password"
               placeholder="password"
+              onChange={e => setPassword(e.target.value)}
+              value={password}
               required
             />
             <label htmlFor="password">Password</label>
           </div>
-          <button className="cta">Sign Up</button>
+          <button
+            className="cta"
+            onClick={e => {
+              e.preventDefault();
+              handleSignUp(email, password);
+              setPassword("");
+              setEmail("");
+            }}
+          >
+            Sign Up
+          </button>
         </form>
 
         <div className="divider">
@@ -60,10 +77,10 @@ const SignUp = () => {
         </div>
 
         <div className="other-method">
-          <button className="google">
+          <button className="google" onClick={() => googleLogin()}>
             <img src={google} alt="google-icon" /> Sign Up with Google
           </button>
-          <button className="github">
+          <button className="github" onClick={() => githubLogin()}>
             <img src={github} alt="github-icon" /> Sign Up with GitHub
           </button>
         </div>
